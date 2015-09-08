@@ -35,7 +35,7 @@ This template accepts the following parameters:
   proxy_uri = @host.params['http-proxy'] ? "http://#{@host.params['http-proxy']}:#{@host.params['http-proxy-port']}" : nil
   proxy_string = proxy_uri ? " --proxy=#{proxy_uri}" : ''
   puppet_enabled = pm_set || @host.params['force-puppet'] && @host.params['force-puppet'] == 'true'
-  salt_enabled = @host.params['salt_master'] ? true : false
+  salt_enabled = @host.params['salt_master'] == 'true'
   chef_enabled = @host.respond_to?(:chef_proxy) && @host.chef_proxy
   section_end = (rhel_compatible && os_major <= 5) ? '' : '%end'
 %>
