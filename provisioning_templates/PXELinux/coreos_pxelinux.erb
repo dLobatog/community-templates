@@ -6,7 +6,13 @@ oses:
 - CoreOS
 %>
 DEFAULT coreos
+PROMPT 1
+TIMEOUT 15
+
+DISPLAY boot.msg
 
 LABEL coreos
-    KERNEL <%= @kernel %>
-    APPEND initrd=<%= @initrd %> cloud-config-url=<%= foreman_url('provision')%>
+  MENU default
+  KERNEL <%= @kernel %>
+  INITRD <%= @initrd %>
+  APPEND coreos.first_boot=1 coreos.config.url=<%= foreman_url('provision') %>
